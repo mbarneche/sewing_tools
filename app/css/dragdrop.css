@@ -1,0 +1,134 @@
+/* =====================================================
+   Drag and Drop Visual Feedback Styles
+   ===================================================== */
+
+/* Source element being dragged */
+input[type="number"].drag-source {
+  opacity: 0.5;
+  border: 2px solid #667eea;
+  background-color: #e0e7ff;
+}
+
+/* Available drop targets */
+input[type="number"].drop-target-available {
+  border: 2px dashed #a5b4fc;
+  background-color: #f5f7ff;
+  transition: all 0.2s ease;
+}
+
+/* Drop target on hover */
+input[type="number"].drop-target-hover {
+  border: 2px solid #667eea;
+  background-color: #dbeafe;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: scale(1.02);
+}
+
+/* Successful drop animation */
+input[type="number"].drop-success {
+  animation: dropSuccess 0.6s ease;
+}
+
+@keyframes dropSuccess {
+  0% {
+    background-color: #86efac;
+    transform: scale(1.05);
+  }
+  100% {
+    background-color: transparent;
+    transform: scale(1);
+  }
+}
+
+/* Ghost element that follows cursor */
+.drag-ghost {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
+  max-width: 300px;
+}
+
+.drag-ghost-label {
+  font-size: 0.85em;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.drag-ghost-value {
+  font-size: 1.1em;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Drop preview showing what value will be inserted */
+.drop-preview {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #667eea;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  animation: previewPulse 1s ease-in-out infinite;
+}
+
+@keyframes previewPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Ensure proper cursor states */
+input[type="number"][draggable="true"]:not(:disabled):not([readonly]) {
+  cursor: grab !important;
+}
+
+input[type="number"][draggable="true"]:not(:disabled):not([readonly]):active {
+  cursor: grabbing !important;
+}
+
+/* Empty fields should show a different cursor */
+input[type="number"][draggable="true"]:not(:disabled):not([readonly]):placeholder-shown {
+  cursor: text;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .drop-preview {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -35px;
+    transform: translateX(-50%);
+  }
+  
+  .drag-ghost {
+    min-width: 120px;
+    padding: 8px 12px;
+  }
+  
+  .drag-ghost-label {
+    font-size: 0.75em;
+  }
+  
+  .drag-ghost-value {
+    font-size: 1em;
+  }
+}

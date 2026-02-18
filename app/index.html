@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outil de mesure pour la couture</title>
+  
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dragdrop.css">
+  
+  <!-- Feature-specific Styles -->
+  <link rel="stylesheet" href="modules/form/form.css">
+  <link rel="stylesheet" href="modules/saver/saver.css">
+  <link rel="stylesheet" href="modules/converter/converter.css">
+  <link rel="stylesheet" href="modules/scaler/scaler.css">
+  <link rel="stylesheet" href="modules/solver/solver.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 data-i18n="header.title">Outil de Mesure pour la Couture</h1>
+      <p data-i18n="header.subtitle">Entrez, manipulez et conservez vos mesures pour la couture</p>
+      <div class="badge" data-i18n="header.author">Par Maxence Barnèche</div>
+      
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button data-language-btn="en" onclick="i18n.setLanguage('en')">English</button>
+        <button data-language-btn="fr" class="active" onclick="i18n.setLanguage('fr')">Français</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="global-unit-switch">
+        <label for="globalUnitToggle" data-i18n="unitSwitch.label">Unité de mesure globale :</label>
+        <div class="unit-selector">
+          <button class="unit-btn active" onclick="setGlobalUnit('cm')" data-i18n="unitSwitch.cm">cm</button>
+          <button class="unit-btn" onclick="setGlobalUnit('in')" data-i18n="unitSwitch.in">pouces (in)</button>
+          <button class="unit-btn" onclick="setGlobalUnit('ft')" data-i18n="unitSwitch.ft">pieds (ft)</button>
+        </div>
+      </div>
+      
+      <div class="layout-controls">
+        <button type="button" id="showLeftOnlyBtn" class="layout-btn" onclick="toggleLayoutSection('right')" data-i18n="layoutControls.hideCalculators">Masquer calculateurs</button>
+        <button type="button" id="showRightOnlyBtn" class="layout-btn" onclick="toggleLayoutSection('left')" data-i18n="layoutControls.hideMeasurements">Masquer mesures</button>
+        <button type="button" id="showBothBtn" class="layout-btn active" onclick="setLayoutState('both')" data-i18n="layoutControls.showAll">Tout afficher</button>
+      </div>
+
+      <div class="main-layout">
+        <div class="main-left">
+          <div id="formContainer"></div>
+          <div id="saverContainer"></div>
+        </div>
+        <aside class="main-right" id="converterAndScalerContainer"></aside>
+      </div>
+    </main>
+  </div>
+
+  <legalfooter>
+    <p data-i18n="legal.dataNotice">Aucune donnee n'est collectee puisque cette application tourne localement sur votre navigateur.</p>
+    <p data-i18n="legal.license">Licence MIT: partagez et reutilisez comme bon vous semble tant que vous conservez cette licence ;)</p>
+  </legalfooter>
+
+  <!-- Core App -->
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dragdrop.js"></script>
+  
+  <!-- Feature Scripts in order -->
+  <script src="modules/form/form.js"></script>
+  <script src="modules/saver/saver.js"></script>
+  <script src="modules/converter/converter.js"></script>
+  <script src="modules/scaler/scaler.js"></script>
+  <script src="modules/solver/solver.js"></script>
+  
+  <!-- Initialization -->
+  <script>
+    window.addEventListener('DOMContentLoaded', async function() {
+      await i18n.loadLanguage(i18n.currentLanguage);
+      i18n.updateUI();
+      initializeApp();
+      
+      // Initialize drag and drop functionality after content is loaded
+      initializeDragAndDrop();
+    });
+  </script>
+</body>
+</html>

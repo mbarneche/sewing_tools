@@ -1,0 +1,492 @@
+/* Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1em;
+  opacity: 0.95;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  margin-top: 10px;
+}
+
+.language-switcher {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.language-switcher button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.language-switcher button:hover {
+  background-color: white;
+  color: #667eea;
+}
+
+.language-switcher button.active {
+  background-color: white;
+  color: #667eea;
+  border-color: white;
+}
+
+main {
+  padding: 40px;
+}
+
+.global-unit-switch {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f0f4f8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #e0e0e0;
+}
+
+.global-unit-switch label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.unit-selector {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.unit-btn {
+  background-color: #ecf0f1;
+  color: #333;
+  padding: 6px 12px;
+  border: 2px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 45px;
+}
+
+.unit-btn:hover {
+  background-color: #d5dbdb;
+}
+
+.unit-btn.active {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 25px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.main-left {
+  min-width: 0;
+}
+
+.main-right {
+  min-width: 0;
+}
+
+.main-layout.show-left-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.main-layout.show-left-only .main-right {
+  display: none;
+}
+
+.main-layout.show-left-only .main-left {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main-layout.show-right-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.main-layout.show-right-only .main-left {
+  display: none;
+}
+
+.main-layout.show-right-only .main-right {
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.layout-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.layout-btn {
+  background-color: #ecf0f1;
+  color: #333;
+  padding: 8px 12px;
+  border: 2px solid #bdc3c7;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.layout-btn:hover {
+  background-color: #d5dbdb;
+}
+
+.layout-btn.active {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Form Elements */
+
+.measurement-form {
+  margin-bottom: 30px;
+}
+
+fieldset {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 25px;
+  background: #f9f9f9;
+}
+
+legend {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #333;
+  padding: 0 15px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}
+
+input[type="number"],
+input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  background-color: white;
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: #999;
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Form Groups with Units */
+
+.form-group-with-unit {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.form-group-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-input label {
+  margin-bottom: 8px;
+}
+
+.form-group-input input {
+  width: 100%;
+}
+
+.input-unit-controls {
+  display: flex;
+  gap: 5px;
+  height: fit-content;
+  flex-wrap: wrap;
+}
+
+.custom-measurement-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.custom-measurement-name {
+  flex: 1;
+  min-width: 180px;
+}
+
+.custom-measurement-value-group {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.custom-measurement-value-group input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.custom-measurement-action {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.custom-measurement-select {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.custom-measurement-button {
+  background-color: #667eea;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.unit-switch {
+  background-color: #ecf0f1;
+  color: #333;
+  padding: 6px 10px;
+  border: 2px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 0.7em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  min-width: 40px;
+}
+
+.unit-switch:hover {
+  background-color: #d5dbdb;
+}
+
+.unit-switch.active {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Collapsible Sections */
+
+.collapsible-category {
+  margin-bottom: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.collapsible-header {
+  background: #f9f9f9;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.collapsible-header:hover {
+  background: #f0f0f0;
+}
+
+.collapsible-header-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1em;
+}
+
+.collapsible-toggle {
+  font-size: 1.2em;
+  color: #667eea;
+  transition: transform 0.3s;
+}
+
+.collapsible-toggle.expanded {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  padding: 20px;
+  background: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.collapsible-content.expanded {
+  max-height: 1000px;
+  transition: max-height 0.3s ease-in;
+}
+
+.collapsible-content .form-group {
+  margin-bottom: 15px;
+}
+
+/* Footer */
+
+legalfooter {
+  text-align: center;
+  font-size: 0.80em;
+  padding: 20px;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  fieldset {
+    padding: 20px;
+  }
+
+  .main-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .layout-controls {
+    flex-direction: column;
+  }
+
+  .global-unit-switch {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .unit-selector {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .custom-measurement-action {
+    flex-basis: 100%;
+  }
+
+  .custom-measurement-action button {
+    width: 100%;
+  }
+}

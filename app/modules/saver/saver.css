@@ -1,0 +1,186 @@
+/* Saver Feature - Styles */
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.btn-save {
+  background-color: #667eea;
+  color: white;
+  flex: 1;
+  min-width: 150px;
+}
+
+.btn-save:hover {
+  background-color: #5568d3;
+}
+
+.saved-measurements-section {
+  margin-top: 40px;
+  padding: 25px;
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.saved-measurements-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.saved-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.saved-item {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.saved-item:hover {
+  border-color: #667eea;
+  background-color: #f5f7ff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.saved-item-info {
+  flex: 1;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.saved-item-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.saved-item-date {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.saved-item-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+  font-size: 0.95em;
+}
+
+.export-import-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-export {
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 16px;
+  font-size: 0.85em;
+}
+
+.btn-export:hover {
+  background-color: #229954;
+}
+
+.btn-print {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 12px;
+  font-size: 0.75em;
+}
+
+.btn-print:hover {
+  background-color: #2980b9;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 12px;
+  font-size: 0.85em;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-import {
+  background-color: #9b59b6;
+  color: white;
+  padding: 10px 16px;
+  font-size: 0.85em;
+}
+
+.btn-import:hover {
+  background-color: #8e44ad;
+}
+
+#fileInput {
+  display: none;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+  .saved-list {
+    grid-template-columns: 1fr;
+  }
+
+  .saved-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .saved-item-actions {
+    width: 100%;
+  }
+
+  .btn-export, .btn-print, .btn-delete {
+    flex: 1;
+    min-width: 70px;
+  }
+
+  .export-import-buttons {
+    flex-direction: column;
+  }
+
+  .export-import-buttons button {
+    width: 100%;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group > div {
+    flex-direction: column;
+  }
+
+  .button-group input {
+    width: 100%;
+  }
+}

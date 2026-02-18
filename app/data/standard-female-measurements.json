@@ -1,0 +1,127 @@
+{
+  "unit": "cm",
+  "sizes": [36, 38, 40, 42, 44],
+  "placeholderValue": -1,
+  "measures": [
+    {
+      "id": 1,
+      "label": "Longueur taille dos",
+      "values": {"36": 40.5, "38": 41, "40": 41.5, "42": 42, "44": 42.5}
+    },
+    {
+      "id": 2,
+      "label": "Longueur taille devant",
+      "values": {"36": 36.5, "38": 37, "40": 37.5, "42": 38, "44": 38.5}
+    },
+    {
+      "id": 3,
+      "label": "Tour de poitrine",
+      "values": {"36": 84, "38": 88, "40": 92, "42": 96, "44": 100}
+    },
+    {
+      "id": 4,
+      "label": "Hauteur de poitrine",
+      "values": {"36": 21.5, "38": 22, "40": 22.5, "42": 23, "44": 23.5}
+    },
+    {
+      "id": 5,
+      "label": "1/2 ecart de poitrine",
+      "values": {"36": 9, "38": 9.25, "40": 9.5, "42": 9.75, "44": 10}
+    },
+    {
+      "id": 6,
+      "label": "Tour de ceinture",
+      "values": {"36": 64, "38": 68, "40": 72, "42": 76, "44": 80}
+    },
+    {
+      "id": 7,
+      "label": "Tour de bassin (petites hanches)",
+      "values": {"36": 81, "38": 85, "40": 89, "42": 93, "44": 97}
+    },
+    {
+      "id": 8,
+      "label": "Tour de bassin (grandes hanches)",
+      "values": {"36": 90, "38": 94, "40": 98, "42": 102, "44": 106}
+    },
+    {
+      "id": 9,
+      "label": "Tour d'encolure",
+      "values": {"36": 35, "38": 36, "40": 37, "42": 38, "44": 39}
+    },
+    {
+      "id": 10,
+      "label": "Carrure dos",
+      "values": {"36": 17.25, "38": 17.5, "40": 17.75, "42": 18, "44": 18.25}
+    },
+    {
+      "id": 11,
+      "label": "Carrure devant",
+      "values": {"36": 16.25, "38": 16.5, "40": 16.75, "42": 17, "44": 17.25}
+    },
+    {
+      "id": 12,
+      "label": "Longueur d'epaule",
+      "values": {"36": 11.6, "38": 12, "40": 12.4, "42": 12.8, "44": 13.2}
+    },
+    {
+      "id": 13,
+      "label": "Tour d'emmanchure",
+      "values": {"36": 38.5, "38": 39.5, "40": 40.5, "42": 41.5, "44": 42.5}
+    },
+    {
+      "id": 14,
+      "label": "Hauteur dessous de bras",
+      "values": {"36": 21.25, "38": 21.5, "40": 21.75, "42": 22, "44": 22.25}
+    },
+    {
+      "id": 15,
+      "label": "Longueur de bras",
+      "values": {"36": 60, "38": 60, "40": 60, "42": 60, "44": 60}
+    },
+    {
+      "id": 16,
+      "label": "Grosseur de bras",
+      "values": {"36": 25, "38": 26, "40": 27, "42": 28, "44": 29}
+    },
+    {
+      "id": 17,
+      "label": "Hauteur coude",
+      "values": {"36": 35, "38": 35, "40": 35, "42": 35, "44": 35}
+    },
+    {
+      "id": 18,
+      "label": "Tour de poignet",
+      "values": {"36": 15.75, "38": 16, "40": 16.25, "42": 16.5, "44": 16.75}
+    },
+    {
+      "id": 19,
+      "label": "Hauteur taille - bassin",
+      "values": {"36": 22, "38": 22, "40": 22, "42": 22, "44": 22}
+    },
+    {
+      "id": 20,
+      "label": "Hauteur de montant",
+      "values": {"36": 26, "38": 26.5, "40": 27, "42": 27.5, "44": 28}
+    },
+    {
+      "id": 21,
+      "label": "Enfourchure",
+      "values": {"36": 58, "38": 60, "40": 62, "42": 64, "44": 66}
+    },
+    {
+      "id": 22,
+      "label": "Hauteur taille au genou",
+      "values": {"36": 57, "38": 58, "40": 59, "42": 60, "44": 61}
+    },
+    {
+      "id": 23,
+      "label": "Hauteur taille a terre",
+      "values": {"36": 105, "38": 105, "40": 106, "42": 106, "44": 107}
+    },
+    {
+      "id": 24,
+      "label": "Hauteur taille cote a terre",
+      "values": {"36": 105.5, "38": 105.5, "40": 106.5, "42": 106.5, "44": 107.5}
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+<!-- Saver Feature - HTML Structure -->
+
+<div class="measurement-form">
+  <fieldset>
+    <legend>Mesures Corporelles</legend>
+    
+    <div class="form-group">
+      <label for="bodyType">Profil Type de Corps :</label>
+      <select id="bodyType" name="bodyType">
+        <option value="">-- Sélectionner un profil --</option>
+        <option value="petite">Petite</option>
+        <option value="average">Moyenne</option>
+        <option value="tall">Grande</option>
+        <option value="plussize">Grande Taille</option>
+      </select>
+    </div>
+
+    <!-- Buste Category -->
+    <div class="collapsible-category">
+      <div class="collapsible-header" onclick="toggleCategory('buste')">
+        <span class="collapsible-header-title">Buste</span>
+        <span class="collapsible-toggle" id="toggle-buste">▼</span>
+      </div>
+      <div class="collapsible-content" id="content-buste">
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourEncolure">Tour d'encolure :</label>
+            <input type="number" id="tourEncolure" name="tourEncolure" placeholder="ex. 35" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourEncolure', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourEncolure', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourEncolure', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourEpaule">Tour d'épaule :</label>
+            <input type="number" id="tourEpaule" name="tourEpaule" placeholder="ex. 40" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourEpaule', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourEpaule', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourEpaule', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="longueurEpaule">Longueur de l'épaule :</label>
+            <input type="number" id="longueurEpaule" name="longueurEpaule" placeholder="ex. 13" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('longueurEpaule', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('longueurEpaule', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('longueurEpaule', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourPoitrine">Tour de poitrine/torse :</label>
+            <input type="number" id="tourPoitrine" name="tourPoitrine" placeholder="ex. 95" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourPoitrine', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourPoitrine', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourPoitrine', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="hauteurPoitrine">Hauteur de poitrine :</label>
+            <input type="number" id="hauteurPoitrine" name="hauteurPoitrine" placeholder="ex. 27" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('hauteurPoitrine', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('hauteurPoitrine', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('hauteurPoitrine', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="longueurDos">Longueur du dos :</label>
+            <input type="number" id="longueurDos" name="longueurDos" placeholder="ex. 42" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('longueurDos', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('longueurDos', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('longueurDos', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourTaille">Tour de taille :</label>
+            <input type="number" id="tourTaille" name="tourTaille" placeholder="ex. 75" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourTaille', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourTaille', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourTaille', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="hauteurTaille">Hauteur de taille :</label>
+            <input type="number" id="hauteurTaille" name="hauteurTaille" placeholder="ex. 20" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('hauteurTaille', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('hauteurTaille', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('hauteurTaille', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourHanches">Tour de hanches :</label>
+            <input type="number" id="tourHanches" name="tourHanches" placeholder="ex. 100" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourHanches', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourHanches', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourHanches', 'ft')">ft</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bras Category -->
+    <div class="collapsible-category">
+      <div class="collapsible-header" onclick="toggleCategory('bras')">
+        <span class="collapsible-header-title">Bras</span>
+        <span class="collapsible-toggle" id="toggle-bras">▼</span>
+      </div>
+      <div class="collapsible-content" id="content-bras">
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourBras">Tour de bras :</label>
+            <input type="number" id="tourBras" name="tourBras" placeholder="ex. 28" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourBras', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourBras', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourBras', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="longueurManche">Longueur de manche :</label>
+            <input type="number" id="longueurManche" name="longueurManche" placeholder="ex. 60" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('longueurManche', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('longueurManche', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('longueurManche', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourPoignet">Tour de poignet :</label>
+            <input type="number" id="tourPoignet" name="tourPoignet" placeholder="ex. 18" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourPoignet', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourPoignet', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourPoignet', 'ft')">ft</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jambe Category -->
+    <div class="collapsible-category">
+      <div class="collapsible-header" onclick="toggleCategory('jambe')">
+        <span class="collapsible-header-title">Jambe</span>
+        <span class="collapsible-toggle" id="toggle-jambe">▼</span>
+      </div>
+      <div class="collapsible-content" id="content-jambe">
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourCuisse">Tour de cuisse :</label>
+            <input type="number" id="tourCuisse" name="tourCuisse" placeholder="ex. 56" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourCuisse', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourCuisse', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourCuisse', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="entrejambe">Entrejambe :</label>
+            <input type="number" id="entrejambe" name="entrejambe" placeholder="ex. 82" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('entrejambe', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('entrejambe', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('entrejambe', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourGenou">Tour du genou :</label>
+            <input type="number" id="tourGenou" name="tourGenou" placeholder="ex. 38" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourGenou', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourGenou', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourGenou', 'ft')">ft</button>
+          </div>
+        </div>
+
+        <div class="form-group-with-unit">
+          <div class="form-group-input">
+            <label for="tourMollet">Tour de mollet :</label>
+            <input type="number" id="tourMollet" name="tourMollet" placeholder="ex. 35" step="0.5">
+          </div>
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('tourMollet', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourMollet', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('tourMollet', 'ft')">ft</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <div style="flex: 1; display: flex; gap: 10px;">
+        <input type="text" id="saveName" placeholder="Nom pour cette sauvegarde" style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95em;">
+        <button class="btn-save" onclick="saveMeasurements()">Sauvegarder</button>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="measurement-form">
+  <fieldset>
+    <legend>Ajouter une Mesure Personnalisée</legend>
+    
+    <div class="form-group">
+      <label for="customCategory">Catégorie :</label>
+      <select id="customCategory" class="custom-measurement-select">
+        <option value="Buste">Buste</option>
+        <option value="Bras">Bras</option>
+        <option value="Jambe">Jambe</option>
+        <option value="Autre">Autre</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <div class="custom-measurement-row">
+        <input type="text" id="customMeasureName" placeholder="Nom de la mesure" class="custom-measurement-name">
+        <div class="custom-measurement-value-group">
+          <input type="number" id="customMeasureValue" placeholder="Valeur" step="0.5">
+          <div class="input-unit-controls">
+            <button type="button" class="unit-switch active" onclick="convertUnit('customMeasureValue', 'cm')">cm</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('customMeasureValue', 'in')">in</button>
+            <button type="button" class="unit-switch" onclick="convertUnit('customMeasureValue', 'ft')">ft</button>
+          </div>
+        </div>
+        <div class="custom-measurement-action">
+          <button type="button" class="custom-measurement-button" onclick="addCustomMeasurement()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="saved-measurements-section">
+  <h3>Mesures Sauvegardées</h3>
+  <div class="export-import-buttons">
+    <button class="btn-export" onclick="exportAllMeasurements()">Exporter tout</button>
+    <button class="btn-import" onclick="document.getElementById('fileInput').click()">Importer à partir d'un fichier</button>
+    <input type="file" id="fileInput" accept=".json" onchange="importMeasurements(event)">
+  </div>
+  <div id="savedList" class="saved-list">
+    <div class="empty-message">Aucune mesure sauvegardée</div>
+  </div>
+</div>

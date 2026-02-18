@@ -1,0 +1,231 @@
+/* =====================================================
+   Solver Panel Styles
+   ===================================================== */
+
+.solver-panel {
+  margin-top: 20px;
+}
+
+.solver-equations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* Add Equation Prompt */
+.add-equation-prompt {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.add-equation-prompt:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.add-equation-prompt:active {
+  transform: translateY(0);
+}
+
+/* Solver Equation Container */
+.solver-equation {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.solver-equation:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.solver-equation-fields {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Solver Input Fields */
+.solver-input {
+  flex: 1;
+  min-width: 80px;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1em;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.solver-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.solver-input:hover:not(:focus):not([readonly]) {
+  border-color: #cbd5e1;
+}
+
+/* Result Field (readonly) */
+.solver-result {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #667eea;
+  cursor: default;
+}
+
+.solver-result:hover {
+  border-color: #e2e8f0 !important;
+}
+
+/* Flash animation for results */
+.solver-result-flash {
+  animation: resultFlash 0.6s ease;
+}
+
+@keyframes resultFlash {
+  0% {
+    background-color: #86efac;
+    transform: scale(1.05);
+  }
+  100% {
+    background-color: #f8fafc;
+    transform: scale(1);
+  }
+}
+
+/* Operator Button */
+.solver-operator {
+  min-width: 50px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.solver-operator:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.solver-operator:active {
+  transform: scale(0.95);
+}
+
+/* Equals Button */
+.solver-equals {
+  min-width: 50px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.solver-equals:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.solver-equals:active {
+  transform: scale(0.95);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+/* Remove Button */
+.solver-remove {
+  min-width: 40px;
+  padding: 8px 12px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.5em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.solver-remove:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.solver-remove:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .solver-equation-fields {
+    gap: 8px;
+  }
+  
+  .solver-input {
+    min-width: 60px;
+    padding: 10px 8px;
+    font-size: 0.9em;
+  }
+  
+  .solver-operator,
+  .solver-equals {
+    min-width: 40px;
+    padding: 10px 12px;
+    font-size: 1em;
+  }
+  
+  .solver-remove {
+    min-width: 35px;
+    padding: 6px 10px;
+    font-size: 1.3em;
+  }
+  
+  .add-equation-prompt {
+    padding: 15px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .solver-equation-fields {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .solver-input {
+    flex: 0 1 calc(50% - 5px);
+    min-width: unset;
+  }
+  
+  .solver-operator,
+  .solver-equals {
+    flex: 0 0 auto;
+  }
+}
