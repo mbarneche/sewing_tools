@@ -77,11 +77,9 @@ Because this app works offline and respects privacy, you can easily share it:
 ### Getting Started
 
 1. **Open the app**
-   - Start the app as described in the Installation section above
-
-2. **Main interface**
-   
-   [Screenshot placeholder: Main app interface - add screenshot here]
+   - Start the app by opening `launcher.html` in your browser
+   - If it's your first time, the app will download and set up automatically
+   - Once the app is open, you can begin entering your measurements and managing your patterns
 
 ### Basic Workflow
 
@@ -92,15 +90,11 @@ Because this app works offline and respects privacy, you can easily share it:
 - Choose between metric (cm) and imperial (inches) units
 - The app includes reference standard measurements you can use as a starting point
 
-[Screenshot placeholder: Measurements input form - add screenshot here]
-
 #### Step 2: Convert and Calculate
 
 - Use the converter tool to transform measurements between different units
 - Use the scaler to adjust patterns to your size
 - All calculations happen instantly in your browser
-
-[Screenshot placeholder: Converter and scaler interface - add screenshot here]
 
 #### Step 3: Save and Export
 
@@ -108,15 +102,11 @@ Because this app works offline and respects privacy, you can easily share it:
 - Your data is stored on your computer, not on any server
 - You can download and import your projects as needed
 
-[Screenshot placeholder: Save/export interface - add screenshot here]
-
 #### Step 4: Use Your Patterns
 
 - Apply your customized measurements to sewing patterns
 - Print or view patterns digitally
 - All modifications remain private and local to your device
-
-[Screenshot placeholder: Pattern view - add screenshot here]
 
 ### Language Support
 
@@ -152,6 +142,7 @@ sewing_tools/
 │       ├── saver/                # Save/export functionality
 │       ├── scaler/               # Pattern scaling
 │       └── solver/               # Calculation engine
+├── launcher.html                  # Launcher for first-time setup and updates
 ├── LICENSE                        # License file
 └── README.md                      # This file
 ```
