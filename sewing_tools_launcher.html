@@ -559,9 +559,10 @@
         // ============================================================================
         async function registerServiceWorker() {
             // Only register service worker if not using file:// protocol
-            const isFileProtocol = window.location.protocol === 'file:' | window.location.protocol === 'content:';
+            protocol = window.location.protocol;
+            isFileProtocol = protocol === 'file:' || protocol === 'filesystem:' || protocol === 'content:';
             if (isFileProtocol) {
-                console.warn('Service Worker not available with file:// protocol. Files will be served directly.');
+                console.warn(`Service Worker not available with ${protocol}// protocol. Files will be served directly.`);
                 return;
             }
             
