@@ -181,9 +181,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>✂️ Sewing Tools</h1>
-        <div class="subtitle">Offline pattern converter</div>
-
+        <h1>Sewing Tools</h1>
         <div class="message" id="message">Initializing...</div>
         <div class="status" id="status"></div>
         <div id="errorContainer"></div>
@@ -200,6 +198,8 @@
         const CONFIG = {
             GITHUB_USER: 'mbarneche',
             GITHUB_REPO: 'sewing_tools',
+            RELEASE_ZIP_ASSET_NAME: '',
+            RELEASE_ZIP_PATH: 'app.zip',
             UPDATE_CHECK_INTERVAL: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
             JSZIP_CDN: 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'
         };
@@ -286,15 +286,39 @@
         // ============================================================================
         async function getLatestRelease() {
             const url = `https://api.github.com/repos/${CONFIG.GITHUB_USER}/${CONFIG.GITHUB_REPO}/releases/latest`;
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Failed to fetch release from GitHub');
+            const response = await fetch(url, {
+                headers: { 'Accept': 'application/vnd.github+json' }
+            });
+            if (!response.ok) {
+                const detail = await response.text();
+                throw new Error(`GitHub API error (${response.status}): ${detail}`);
+            }
             return response.json();
         }
 
         async function downloadFile(url) {
             const response = await fetch(url);
-            if (!response.ok) throw new Error('Download failed');
+            if (!response.ok) {
+                const detail = await response.text();
+                throw new Error(`Download failed (${response.status}): ${detail}`);
+            }
             return response.arrayBuffer();
+        }
+
+        function getReleaseZipUrl(release) {
+            const assets = Array.isArray(release.assets) ? release.assets : [];
+            const asset = assets.find(item => item.name === CONFIG.RELEASE_ZIP_ASSET_NAME);
+            if (asset && asset.browser_download_url) {
+                return asset.browser_download_url;
+            }
+
+            const tag = release.tag_name;
+            const path = (CONFIG.RELEASE_ZIP_PATH || '').replace(/^\/+/, '');
+            if (tag && path) {
+                return `https://raw.githubusercontent.com/${CONFIG.GITHUB_USER}/${CONFIG.GITHUB_REPO}/${tag}/${path}`;
+            }
+
+            throw new Error('No release zip found. Add app.zip as a release asset or commit it to the repo.');
         }
 
         // ============================================================================
@@ -472,7 +496,7 @@
             try {
                 updateStatus('Downloading update...');
 
-                const arrayBuffer = await downloadFile(release.zipball_url);
+                const arrayBuffer = await downloadFile(getReleaseZipUrl(release));
 
                 updateStatus('Installing update...');
 
@@ -612,7 +636,7 @@
                     const release = await getLatestRelease();
                     updateStatus('Downloading files...');
 
-                    const arrayBuffer = await downloadFile(release.zipball_url);
+                    const arrayBuffer = await downloadFile(getReleaseZipUrl(release));
 
                     await extractAndStoreZip(arrayBuffer, release);
 
