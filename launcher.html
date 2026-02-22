@@ -198,10 +198,10 @@
         const CONFIG = {
             GITHUB_USER: 'mbarneche',
             GITHUB_REPO: 'sewing_tools',
-            RELEASE_ZIP_ASSET_NAME: '',
-            RELEASE_ZIP_PATH: 'app.zip',
+            APP_ROOT_PATH: 'app/',
+            MANIFEST_PATH: 'app/manifest.json',
             UPDATE_CHECK_INTERVAL: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
-            JSZIP_CDN: 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'
+            JSZIP_CDN: ''
         };
 
         const DB_NAME = 'SewingToolsDB';
@@ -305,68 +305,65 @@
             return response.arrayBuffer();
         }
 
-        function getReleaseZipUrl(release) {
-            const assets = Array.isArray(release.assets) ? release.assets : [];
-            const asset = assets.find(item => item.name === CONFIG.RELEASE_ZIP_ASSET_NAME);
-            if (asset && asset.browser_download_url) {
-                return asset.browser_download_url;
+        async function downloadJson(url) {
+            const response = await fetch(url, {
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!response.ok) {
+                const detail = await response.text();
+                throw new Error(`Download failed (${response.status}): ${detail}`);
             }
+            return response.json();
+        }
 
+        function getManifestUrl(release) {
             const tag = release.tag_name;
-            const path = (CONFIG.RELEASE_ZIP_PATH || '').replace(/^\/+/, '');
+            const path = (CONFIG.MANIFEST_PATH || '').replace(/^\/+/, '');
             if (tag && path) {
                 return `https://raw.githubusercontent.com/${CONFIG.GITHUB_USER}/${CONFIG.GITHUB_REPO}/${tag}/${path}`;
             }
 
-            throw new Error('No release zip found. Add app.zip as a release asset or commit it to the repo.');
+            throw new Error('Manifest path is missing. Set CONFIG.MANIFEST_PATH.');
         }
 
-        // ============================================================================
-        // JSZip LOADING
-        // ============================================================================
-        async function loadJSZip() {
-            if (window.JSZip) return;
-
-            return new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = CONFIG.JSZIP_CDN;
-                script.onload = resolve;
-                script.onerror = () => reject(new Error('Failed to load JSZip library'));
-                document.head.appendChild(script);
-            });
+        function getRawFileUrl(release, filePath) {
+            const tag = release.tag_name;
+            const appRoot = String(CONFIG.APP_ROOT_PATH || '').replace(/^\/+/, '');
+            const path = String(filePath || '').replace(/^\/+/, '');
+            if (!tag || !path) {
+                throw new Error('Manifest contains an invalid file path.');
+            }
+            return `https://raw.githubusercontent.com/${CONFIG.GITHUB_USER}/${CONFIG.GITHUB_REPO}/${tag}/${appRoot}${path}`;
         }
 
-        // ============================================================================
-        // ZIP EXTRACTION
-        // ============================================================================
-        async function extractAndStoreZip(arrayBuffer, release) {
-            updateStatus('Extracting files...');
+        async function downloadAndStoreManifestFiles(release) {
+            updateStatus('Downloading manifest...');
 
-            const zip = new JSZip();
-            await zip.loadAsync(arrayBuffer);
+            const manifestUrl = getManifestUrl(release);
+            const manifest = await downloadJson(manifestUrl);
+            const files = Array.isArray(manifest.files) ? manifest.files : [];
+
+            if (files.length === 0) {
+                throw new Error('Manifest has no files. Check app/manifest.json.');
+            }
 
             let fileCount = 0;
-            const paths = [];
-
-            for (const [path, file] of Object.entries(zip.files)) {
-                if (file.dir) continue;
-
-                const content = await file.async('arraybuffer');
-                await storeFile(path, content);
-                paths.push(path);
+            for (const filePath of files) {
+                const fileUrl = getRawFileUrl(release, filePath);
+                const content = await downloadFile(fileUrl);
+                await storeFile(filePath, content);
 
                 fileCount++;
-                if (fileCount % 20 === 0) {
-                    updateStatus(`Extracting files... (${fileCount})`);
+                if (fileCount % 10 === 0) {
+                    updateStatus(`Downloading files... (${fileCount}/${files.length})`);
                 }
             }
 
-            // Store metadata
             const metadata = {
                 version: release.tag_name,
                 downloadedAt: new Date().toISOString(),
                 lastUpdateCheck: new Date().getTime(),
-                files: paths
+                files
             };
 
             await storeMetadata(metadata);
@@ -496,8 +493,6 @@
             try {
                 updateStatus('Downloading update...');
 
-                const arrayBuffer = await downloadFile(getReleaseZipUrl(release));
-
                 updateStatus('Installing update...');
 
                 // Clear old files
@@ -508,8 +503,8 @@
                     }
                 }
 
-                // Extract and store new files
-                await extractAndStoreZip(arrayBuffer, release);
+                // Download and store new files
+                await downloadAndStoreManifestFiles(release);
 
                 showNotification(
                     '✅ Update installed',
@@ -631,14 +626,10 @@
                     updateMessage('Downloading Sewing Tools (first time)...');
                     updateStatus('Requires internet connection');
 
-                    await loadJSZip();
-
                     const release = await getLatestRelease();
                     updateStatus('Downloading files...');
 
-                    const arrayBuffer = await downloadFile(getReleaseZipUrl(release));
-
-                    await extractAndStoreZip(arrayBuffer, release);
+                    await downloadAndStoreManifestFiles(release);
 
                     setVersion(release.tag_name);
                     updateMessage('Ready!');

@@ -1,0 +1,25 @@
+{
+    "files": [
+        "index.html",
+        "css/dragdrop.css",
+        "css/styles.css",
+        "data/standard-female-measurements.json",
+        "data/standard-male-measurements.json",
+        "js/app.js",
+        "js/dragdrop.js",
+        "js/i18n.js",
+        "locales/en.json",
+        "locales/fr.json",
+        "modules/converter/converter.css",
+        "modules/converter/converter.js",
+        "modules/form/form.css",
+        "modules/form/form.js",
+        "modules/saver/saver.css",
+        "modules/saver/saver.html",
+        "modules/saver/saver.js",
+        "modules/scaler/scaler.css",
+        "modules/scaler/scaler.js",
+        "modules/solver/solver.css",
+        "modules/solver/solver.js"
+    ]
+}
