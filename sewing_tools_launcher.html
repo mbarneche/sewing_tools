@@ -535,13 +535,17 @@
                 updateStatus('Opening app...');
 
                 // Register service worker to serve files from IndexedDB
-                if ('serviceWorker' in navigator) {
+                // Service Workers only work with http/https, not file://
+                const isFileProtocol = window.location.protocol === 'file:';
+                if ('serviceWorker' in navigator && !isFileProtocol) {
                     await registerServiceWorker();
                 }
 
                 // Redirect to app page
                 setTimeout(() => {
-                    window.location.href = '/app/';
+                    // For file:// protocol, use relative path; for http(s), use absolute path
+                    const appPath = isFileProtocol ? './app/index.html' : '/app/';
+                    window.location.href = appPath;
                 }, 500);
 
             } catch (error) {
@@ -554,6 +558,13 @@
         // SERVICE WORKER
         // ============================================================================
         async function registerServiceWorker() {
+            // Only register service worker if not using file:// protocol
+            const isFileProtocol = window.location.protocol === 'file:';
+            if (isFileProtocol) {
+                console.warn('Service Worker not available with file:// protocol. Files will be served directly.');
+                return;
+            }
+            
             try {
                 const swCode = `
                 const DB_NAME = '${DB_NAME}';
