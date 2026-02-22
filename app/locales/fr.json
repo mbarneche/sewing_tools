@@ -143,8 +143,8 @@
     "reset": "Reinitialiser"
   },
   "solver": {
-    "title": "Solveur d'Équations",
-    "addEquation": "Cliquer pour ajouter une équation",
+    "title": "Tansfomateur de Mesures",
+    "addEquation": "Cliquer pour ajouter une transformation",
     "remove": "Retirer"
   }
 }

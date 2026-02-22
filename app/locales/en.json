@@ -143,8 +143,8 @@
     "reset": "Reset"
   },
   "solver": {
-    "title": "Equation Solver",
-    "addEquation": "Click to add an equation",
+    "title": "Measurement Transformer",
+    "addEquation": "Click to add a transformation",
     "remove": "Remove"
   }
 }

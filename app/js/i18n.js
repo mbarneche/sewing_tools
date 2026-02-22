@@ -163,8 +163,8 @@ const EMBEDDED_TRANSLATIONS = {
       "reset": "Reinitialiser"
     },
     "solver": {
-      "title": "Solveur d'Équations",
-      "addEquation": "Cliquer pour ajouter une équation",
+      "title": "Transformateur de Mesures",
+      "addEquation": "Cliquer pour ajouter une transformation",
       "remove": "Retirer"
     }
   },
@@ -313,8 +313,8 @@ const EMBEDDED_TRANSLATIONS = {
       "reset": "Reset"
     },
     "solver": {
-      "title": "Equation Solver",
-      "addEquation": "Click to add an equation",
+      "title": "Measurement Transformer",
+      "addEquation": "Click to add a transformation",
       "remove": "Remove"
     }
   }
